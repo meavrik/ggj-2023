@@ -1,12 +1,18 @@
-<app-energy-bar [energy]="(trunkSize$ | async) || 0"></app-energy-bar>
-<app-energy-bar
-  [isEnergy]="true"
-  [energy]="1"
-  style="top: 80px; right: 20px"
-></app-energy-bar>
+<ng-container *ngIf="!showTitle">
+  <app-energy-bar [energy]="(trunkSize$ | async) || 0"></app-energy-bar>
+  <!--  <app-energy-bar
+    [isEnergy]="true"
+    [energy]="1"
+    style="top: 80px; right: 20px"
+  ></app-energy-bar> -->
+</ng-container>
+
+<div *ngIf="showTitle" (click)="startGame()" class="title">
+  <img src="../../assets/splash_popup.png" alt="" />
+</div>
 
 <div *ngIf="(currentWeather$ | async) === 'cloudy' && !isNight" class="cloud">
-  <img src="../../assets/cloud.png" height="200" alt="" />
+  <img src="../../assets/cloud_rain.png" height="300" alt="" />
 </div>
 
 <div class="moon">
@@ -23,7 +29,7 @@
   <app-roots></app-roots>
 </app-ground>
 
-<footer *ngIf="!isNight">
+<footer *ngIf="!isNight && !showTitle">
   <div class="container">
     <div
       class="select"
@@ -33,10 +39,11 @@
       <img
         [src]="
           selected === 'sun'
-            ? ' ../../assets/btn_leaf_up.png'
-            : ' ../../assets/btn_leaf_down.png'
+            ? ' ../../assets/btn_leaf_on.png'
+            : ' ../../assets/btn_leaf_off.png'
         "
         alt=""
+        height="60"
       />
     </div>
 
@@ -48,10 +55,11 @@
       <img
         [src]="
           selected === 'cloudy'
-            ? ' ../../assets/btn_root_up.png'
-            : ' ../../assets/btn_root_down.png'
+            ? ' ../../assets/btn_root_on.png'
+            : ' ../../assets/btn_root_off.png'
         "
         alt=""
+        height="60"
       />
     </div>
     <!--  <button (click)="nextTurn()" [disabled]="!selected || isNight">
@@ -64,7 +72,7 @@
       class="nextButn"
       [class.disabled]="!selected || isNight"
     >
-      <img src="../../assets/btn_next_day.png" height="40" alt="" />
+      <img src="../../assets/btn_next_day.png" height="60" alt="" />
     </span>
 
     <!-- <button (click)="grow()" [disabled]="isNight">Grow</button> -->

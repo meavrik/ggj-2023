@@ -10,7 +10,7 @@ import { GameService, Weather } from './services/game.service';
 export class GameComponent implements OnInit {
   trunkSize$ = this.gameService.trunkSize$.pipe(map((a) => Math.round(a * 10)));
   currentWeather$ = this.gameService.currentWeather$;
-
+  showTitle = true;
   constructor(private gameService: GameService) {}
 
   selected: Weather | null = null;
@@ -18,16 +18,14 @@ export class GameComponent implements OnInit {
   @HostBinding('class.cloudy') cloudy = false;
   @HostBinding('class.night') isNight = false;
   ngOnInit() {
-    this.trunkSize$.subscribe((a) => {
-      console.log('aa', a);
-    });
-    setTimeout(() => {
-      this.gameService.addBranch();
-    }, 1200);
-
     this.currentWeather$.subscribe((a) => {
       this.cloudy = a === 'cloudy';
     });
+  }
+
+  startGame() {
+    this.gameService.addBranch();
+    this.showTitle = false;
   }
 
   nextTurn() {

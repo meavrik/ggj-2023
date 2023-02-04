@@ -30,9 +30,22 @@ $duration: 4s;
   }
 }
 
+.title {
+  cursor: pointer;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
 .nextButn {
-  width: 88px;
-  height: 42px;
+  /*  width: 88px;
+  height: 42px; */
   cursor: pointer;
   &.disabled {
     pointer-events: none;
@@ -40,9 +53,9 @@ $duration: 4s;
   }
 
   &:hover {
-    background-color: black;
-    border: 1px solid white;
-    border-radius: 4px;
+    transform: translateY(-2px);
+    box-shadow: 0px 7px 3px 0px #00000087;
+    border-radius: 8px;
   }
 }
 
@@ -73,7 +86,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  bottom: 0;
+  bottom: 20px;
 }
 
 button {
@@ -88,14 +101,14 @@ button {
 
 .container {
   display: flex;
-  gap: 4px;
+  gap: 1px;
   .select {
-    width: 45px;
-    height: 45px;
-    box-sizing: border-box;
+    /* width: 45px;
+    height: 45px; */
+    // box-sizing: border-box;
     cursor: pointer;
     // box-sizing: border-box;
-    &:hover {
+    /*  &:hover {
       background-color: black;
       border-radius: 8px;
     }
@@ -103,6 +116,16 @@ button {
     &.selected {
       background-color: black;
       border: 1px solid white;
+      border-radius: 8px;
+    } */
+
+    &.selected {
+      transform: translateY(0px);
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 7px 3px 0px #00000087;
       border-radius: 8px;
     }
   }
