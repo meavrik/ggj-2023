@@ -1,0 +1,168 @@
+$duration: 4s;
+
+:host {
+  display: block;
+  background-color: rgb(211 211 251);
+  width: 100vw;
+  height: 100vh;
+  transition: background-color $duration ease;
+
+  &.cloudy {
+    background-color: rgb(82, 82, 119);
+  }
+
+  &.night {
+    animation-duration: $duration;
+    animation-name: go-night;
+    animation-iteration-count: 1;
+
+    .sun {
+      animation-duration: $duration;
+      animation-name: move-sun-down;
+      animation-iteration-count: 1;
+    }
+
+    .moon {
+      animation-duration: $duration;
+      animation-name: move-moon-up;
+      animation-iteration-count: 1;
+    }
+  }
+}
+
+.nextButn {
+  width: 88px;
+  height: 42px;
+  cursor: pointer;
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background-color: black;
+    border: 1px solid white;
+    border-radius: 4px;
+  }
+}
+
+.cloud {
+  z-index: 9;
+  position: absolute;
+  animation-duration: 1s;
+  animation-name: move-cloud;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+}
+.moon {
+  transform: translateY(500%);
+  position: absolute;
+}
+
+.sun {
+  position: absolute;
+  animation-name: move-sun;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+}
+
+footer {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+}
+
+button {
+  background-color: rgb(175, 236, 53);
+  height: 40px;
+  width: 120px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  display: flex;
+  gap: 4px;
+  .select {
+    width: 45px;
+    height: 45px;
+    box-sizing: border-box;
+    cursor: pointer;
+    // box-sizing: border-box;
+    &:hover {
+      background-color: black;
+      border-radius: 8px;
+    }
+    &:active,
+    &.selected {
+      background-color: black;
+      border: 1px solid white;
+      border-radius: 8px;
+    }
+  }
+}
+
+@keyframes go-night {
+  0% {
+    background-color: rgb(211 211 251);
+  }
+  50% {
+    background-color: rgb(62, 62, 92);
+  }
+  100% {
+    background-color: rgb(211 211 251);
+  }
+}
+
+@keyframes move-moon-up {
+  0% {
+    transform: translateY(500%);
+  }
+
+  50% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(500%);
+  }
+}
+
+@keyframes move-sun-down {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-150px);
+  }
+  50% {
+    transform: translateY(300%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes move-cloud {
+  from {
+    translate: -200% 0;
+  }
+  to {
+    translate: 0;
+  }
+}
+
+@keyframes move-sun {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: 360deg;
+  }
+}

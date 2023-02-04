@@ -1,0 +1,17 @@
+:host {
+  position: absolute;
+  transform-origin: left;
+  transform: rotate(270deg);
+  transition: scale 500ms ease-out;
+
+  .trunk {
+    transform-origin: left;
+    animation-name: grow-animation;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+
+    img {
+        position: absolute;
+    }
+  }
+}

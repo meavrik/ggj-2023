@@ -1,0 +1,41 @@
+:host {
+  cursor: pointer;
+
+  &:not(.clickable) {
+    pointer-events: none;
+    cursor: default;
+  }
+}
+
+/* .link-container {
+  cursor: pointer;
+
+  &.clickable {
+    pointer-events: none;
+    cursor: default;
+  }
+} */
+
+.simulateFix {
+  opacity: 0.4;
+}
+
+.link {
+  transition: color 300ms ease-out;
+  pointer-events: none;
+}
+
+.text-on-path {
+  pointer-events: none;
+  font-size: 11px;
+  user-select: none;
+  transition: fill 300ms;
+}
+
+.edge-center {
+  transition: 200ms all;
+
+  &.hover {
+    transform: scale(1.2);
+  }
+}

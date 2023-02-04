@@ -1,0 +1,11 @@
+:host {
+  position: absolute;
+  transform-origin: left;
+
+  img {
+    transform-origin: left;
+    animation-name: grow-animation;
+    animation-duration: 4s;
+    animation-timing-function: ease-out;
+  }
+}

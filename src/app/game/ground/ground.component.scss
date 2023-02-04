@@ -1,0 +1,19 @@
+:host {
+  position: absolute;
+  height: 200px;
+  width: 100vw;
+  bottom: 0;
+  left: 0;
+  box-shadow: inset 0px -8px 19px 9px #00000085;
+  background-image: url("./../../../assets/ground_tile_01.jpg");
+
+  .grass {
+    position: absolute;
+    height: 200px;
+    width: 100vw;
+    bottom: 45px;
+    left: 0;
+    background-image: url("./../../../assets/grass_tile_01.png");
+    background-repeat: repeat-x;
+  }
+}

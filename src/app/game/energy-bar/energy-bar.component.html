@@ -1,0 +1,12 @@
+<img
+  [src]="
+    isEnergy
+      ? '../../../assets/energy_bar.png'
+      : '../../../assets/loading_bar.png'
+  "
+  alt=""
+/>
+
+<div class="bar-container">
+  <div class="bar" *ngFor="let bar of bars"></div>
+</div>

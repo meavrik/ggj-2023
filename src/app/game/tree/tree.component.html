@@ -1,0 +1,6 @@
+<app-branch
+  *ngFor="let branch of currentBranches$ | async"
+  [branch]="branch"
+></app-branch>
+
+<app-trunk [size]="trunkSize$ | async"></app-trunk>

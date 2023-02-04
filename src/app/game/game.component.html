@@ -1,0 +1,72 @@
+<app-energy-bar [energy]="(trunkSize$ | async) || 0"></app-energy-bar>
+<app-energy-bar
+  [isEnergy]="true"
+  [energy]="1"
+  style="top: 80px; right: 20px"
+></app-energy-bar>
+
+<div *ngIf="(currentWeather$ | async) === 'cloudy' && !isNight" class="cloud">
+  <img src="../../assets/cloud.png" height="200" alt="" />
+</div>
+
+<div class="moon">
+  <img style="translate: '100px 50px'" src="../../assets/moon.png" alt="" />
+</div>
+
+<div class="sun">
+  <img src="../../assets/sun.png" alt="" />
+</div>
+<app-tree></app-tree>
+<!-- <app-rain></app-rain> -->
+
+<app-ground>
+  <app-roots></app-roots>
+</app-ground>
+
+<footer *ngIf="!isNight">
+  <div class="container">
+    <div
+      class="select"
+      [class.selected]="selected === 'sun'"
+      (click)="selected = 'sun'"
+    >
+      <img
+        [src]="
+          selected === 'sun'
+            ? ' ../../assets/btn_leaf_up.png'
+            : ' ../../assets/btn_leaf_down.png'
+        "
+        alt=""
+      />
+    </div>
+
+    <div
+      class="select"
+      (click)="selected = 'cloudy'"
+      [class.selected]="selected === 'cloudy'"
+    >
+      <img
+        [src]="
+          selected === 'cloudy'
+            ? ' ../../assets/btn_root_up.png'
+            : ' ../../assets/btn_root_down.png'
+        "
+        alt=""
+      />
+    </div>
+    <!--  <button (click)="nextTurn()" [disabled]="!selected || isNight">
+      Next day
+
+     
+    </button> -->
+    <span
+      (click)="nextTurn()"
+      class="nextButn"
+      [class.disabled]="!selected || isNight"
+    >
+      <img src="../../assets/btn_next_day.png" height="40" alt="" />
+    </span>
+
+    <!-- <button (click)="grow()" [disabled]="isNight">Grow</button> -->
+  </div>
+</footer>
